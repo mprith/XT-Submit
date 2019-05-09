@@ -1,0 +1,113 @@
+$xt-media-width: 300px;
+.xt-media-container {
+  margin: 0 auto;
+  label {
+    width: 200px;
+    height: 30px;
+    cursor: pointer;
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 32px;
+    position: relative;
+    &:after {
+      content: '';
+      height: 4px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 100%;
+      background: $blue1;
+      //transition: right 0.3s linear;
+    }
+    &:hover {
+      color: $blue1;
+    }
+    /* &:hover {
+      &:after {
+        right: 0;
+        background: $blue4;
+        transition: right 0.3s linear;
+      }
+    } */
+  }
+  input {
+    display: none;
+    &:checked {
+      + label:after {
+        right: 0;
+        transition: right 0.3s linear;
+      }
+    }
+    &.xt-media-selector-all:checked ~ .xt-media-items li {
+      width: $xt-media-width;
+      transform: scale(1, 1);
+      transition: transform 0.3s linear;
+    }
+    &.xt-media-selector-1:checked ~ .xt-media-items .media-year-2017,
+    &.xt-media-selector-2:checked ~ .xt-media-items .media-year-2016,
+    &.xt-media-selector-3:checked ~ .xt-media-items .media-year-2015 {
+      transition: transform 0.3s linear, width 0s linear 0.3s;
+      animation: scaleUp 0.3s linear 0.4s forwards;
+    }
+    &.xt-media-selector-1:checked ~ .xt-media-items li:not(.media-year-2017),
+    &.xt-media-selector-2:checked ~ .xt-media-items li:not(.media-year-2016),
+    &.xt-media-selector-3:checked ~ .xt-media-items li:not(.media-year-2015) {
+      animation: scaleDown 0.3s linear forwards;
+    }
+  }
+}
+
+.xt-media-items {
+  position: relative;
+  margin: 0px auto;
+  list-style: none;
+  @include clearfix;
+  li {
+    margin: 0px;
+    float: left;
+    //height: 148px;
+    //width: 0px;
+    transform: scale(0, 0);
+  }
+  a {
+    display: block;
+    position: relative;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.07), 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+    margin: 15px;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+@keyframes scaleUp {
+  50% {
+    width: $xt-media-width;
+    transform: scale(0, 0);
+  }
+  100% {
+    width: $xt-media-width;
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes scaleDown {
+  0% {
+    width: $xt-media-width;
+    transform: scale(1, 1);
+  }
+  99% {
+    width: $xt-media-width;
+    transform: scale(0, 0);
+  }
+  100% {
+    width: 0px;
+    transform: scale(0, 0);
+  }
+}
+

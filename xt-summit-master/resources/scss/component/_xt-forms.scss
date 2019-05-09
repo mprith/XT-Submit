@@ -1,0 +1,92 @@
+/* form{
+    legend {
+        padding:10px;
+    }
+    fieldset > .form-ctrl {
+        margin:10px 0;
+    }
+    fieldset > legend + div {
+        margin-top:0;
+    }
+    fieldset > div:last-child {
+        margin-bottom:0;
+    }
+    label {
+        display:inline-block;
+        width:14em;
+    }
+    input {
+        width:200px;
+    }
+    input[type="number"] {
+        width:30px;
+    }
+    div > input[type="submit"] {
+        background: #ccc;
+        border:1px solid #999;
+        width:auto;
+    }
+    input:required {
+        background:hsl(180, 50%, 90%);
+        border:1px solid #999;
+    }
+    input:optional {
+        background:hsl(300, 50%, 90%);
+        border:1px dotted hsl(180, 50%, 90%);
+    }
+    input:valid,
+    input:in-range {
+        background:hsl(120, 50%, 90%);
+        border-color:hsl(120, 50%, 50%);
+    }
+
+    input:invalid,
+    input:out-of-range {
+        border-color:hsl(0, 50%, 50%);
+        background:hsl(0, 50%, 90%);
+    }
+
+    div.submit {
+        margin-left:100px;
+    }
+} */
+
+.xt-form form{
+  padding: 20px 40px;
+  position: relative;
+  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAECAMAAAB883U1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAlQTFRF7+/v7u7u////REBVnAAAAAN0Uk5T//8A18oNQQAAABZJREFUeNpiYGJiYmBiYgRiBhAGCDAAALsAFJhiJ+UAAAAASUVORK5CYII=);
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  @include breakpoint(large) {
+    padding: 40px 80px;
+  }
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 2px;
+    right: 2px;
+    top: 0;
+    z-index: -1;
+    background: #fff;
+    border: 1px solid #ccc;
+  }
+  &:after {
+    left: 4px;
+    right: 4px;
+    bottom: -5px;
+    z-index: -2;
+    -moz-box-shadow: 0 8px 8px -5px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 8px 8px -5px rgba(0, 0, 0, .3);
+    box-shadow: 0 8px 8px -5px rgba(0, 0, 0, .3);
+  }
+  .help {
+    display: none;
+    font-size: 90%;
+  }
+  input:focus + .help {
+    display: inline-block;
+  }
+}
+
